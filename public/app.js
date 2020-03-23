@@ -2,8 +2,7 @@ const app = angular.module('WweApp', []);
 
 app.controller('MyController', ['$http', function($http) {
     this.title = null;
-    this.website = null;
-    this.potato = "potato";
+    this.link = null;
 
     const controller = this;
 
@@ -13,7 +12,7 @@ app.controller('MyController', ['$http', function($http) {
             url:'/wwe',
             data: {
                 title: this.title,
-                website: this.website
+                link: this.link
             }
         }).then(
             function(response) {
@@ -45,7 +44,7 @@ app.controller('MyController', ['$http', function($http) {
             url: '/wwe/' + wwe._id,
             data: {
                 title: this.updatedTitle || wwe.title,
-                website: this.updatedWebsite || wwe.website
+                link: this.updatedLink || wwe.link
             }
         }).then(
             function(response) {

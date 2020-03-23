@@ -2,11 +2,17 @@
 <html lang="en" dir="ltr" ng-app="WweApp">
     <head>
         <meta charset="UTF-8">
-        <title>WWE GIFs</title>
+        <title>WWE Raw! The place for your favorite wrestling GIFs!</title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js" charset="utf-8"></script>
         <script src="app.js" charset="utf-8" defer></script>
     </head>
     <body ng-controller="MyController as ctrl">
-        {{2 + 2}} - {{ctrl.potato}}
+        <h1>Welcome to WWE Raw! Browse all sorts of wrestling GIFs and memes and submit your own in the form below! <br/>> Don't worry about the HTTP, we got that for you!</h1>
+        <h3>You may also edit by clicking the button in the entry, and clicking the X will delete the entry.</h3>
+        <form ng-submit="ctrl.createWwe()">
+            <input type="text" ng-model="ctrl.title" placeholder="Entry Title"/>
+            <input type="text" ng-model="ctrl.link" placeholder="Link"/>
+            <input type="submit" value="Create My New WWE Meme Entry!"/>
+        </form>
     </body>
 </html>
