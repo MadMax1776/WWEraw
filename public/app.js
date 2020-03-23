@@ -4,6 +4,80 @@ app.controller('MyController', ['$http', function($http) {
     this.title = null;
     this.link = null;
 
+    const controller = this;
+
+    this.createWwe = function() {
+        $http({
+            method: 'POST',
+            url:'/wwe',
+            data: {
+                title: this.title,
+                link: this.link
+            }
+        }).then(
+            function(response) {
+                controller.getWwe();
+            },
+            function(error) {
+                console.log(error);
+            }
+        )
+    };
+
+    this.deleteWwe = function(wwe) {
+        $http({
+            method: 'DELETE',
+            url: '/wwe/' + wwe._id
+        }).then(
+            function() {
+                controller.getWwes();
+            },
+            function(error) {
+
+            }
+        )
+    };
+
+    this.editWwe = function() {
+        $http({
+            method:'PUT',
+            url: '/wwe/' + wwe._id,
+            data: {
+                title: this.updatedTitle || wwe.title,
+                link: this.updatedLink || wwe.link
+            }
+        }).then(
+            function(response) {
+                controller.updatedTitle = null;
+                controller.updatedWebsite = null;
+                controller.getWwes();
+            },
+            function(error) {
+                console.log(error);
+            }
+        )
+    };
+
+    this.getWwes = function() {
+        $http({
+            method: 'GET',
+            url: '/wwe/'
+        }).then(
+            function(response) {
+                controller.wwes = response.data;
+            },
+            function() {
+                console.log('error');
+            }
+        )
+    };
+
+    this.wwes = [];
+
+    this.getWwes();
+}]);
+=======
+
 // console.log(this);
 
     const controller = this;
