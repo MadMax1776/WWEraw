@@ -2,9 +2,78 @@ const app = angular.module('WweApp', []);
 
 app.controller('MyController', ['$http', function($http) {
     this.title = null;
-    this.gifLink = null;
+    this.website = null;
     this.potato = "potato";
 
     const controller = this;
 
+    this.createWwe = function() {
+        $http({
+            method: 'POST',
+            url:'/wwe',
+            data: {
+                title: this.title,
+                website: this.website
+            }
+        }).then(
+            function(response) {
+                controller.getWwe();
+            },
+            function(error) {
+                console.log(error);
+            }
+        )
+    };
+
+    this.deleteWwe = function(wwe) {
+        $http({
+            method: 'DELETE',
+            url: '/wwe/' + wwe._id
+        }).then(
+            function() {
+                controller.getWwes();
+            },
+            function(error) {
+
+            }
+        )
+    };
+
+    this.editWwe = function() {
+        $http({
+            method:'PUT',
+            url: '/wwe/' + wwe._id,
+            data: {
+                title: this.updatedTitle || wwe.title,
+                website: this.updatedWebsite || wwe.website
+            }
+        }).then(
+            function(response) {
+                controller.updatedTitle = null;
+                controller.updatedWebsite = null;
+                controller.getWwes();
+            },
+            function(error) {
+                console.log(error);
+            }
+        )
+    };
+
+    this.getWwes = function() {
+        $http({
+            method: 'GET',
+            url: '/wwe/'
+        }).then(
+            function(response) {
+                controller.wwes = response.data;
+            },
+            function() {
+                console.log('error');
+            }
+        )
+    };
+
+    this.wwes = [];
+
+    this.getWwes();
 }]);
