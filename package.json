@@ -1,0 +1,26 @@
+{
+  "name": "wweraw",
+  "version": "1.0.0",
+  "description": "WWE memes and gifs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadMax1776/WWEraw.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MadMax1776/WWEraw/issues"
+  },
+  "homepage": "https://github.com/MadMax1776/WWEraw#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongo": "^0.1.0",
+    "mongod": "^2.0.0",
+    "mongoose": "^5.9.5"
+  }
+}
