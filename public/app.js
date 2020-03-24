@@ -2,8 +2,8 @@ const app = angular.module('WweApp', []);
 
 app.controller('MyController', ['$http', function($http) {
     this.title = null;
-    this.link = null;
-
+    this.wweLink = null;
+    this.indexOfEdit = null;
     const controller = this;
 
     this.createWwe = function() {
@@ -12,7 +12,7 @@ app.controller('MyController', ['$http', function($http) {
             url:'/wwe',
             data: {
                 title: this.title,
-                link: this.link
+                wweLink: this.wweLink
             }
         }).then(
             function(response) {
@@ -23,84 +23,6 @@ app.controller('MyController', ['$http', function($http) {
             }
         )
     };
-
-    this.deleteWwe = function(wwe) {
-        $http({
-            method: 'DELETE',
-            url: '/wwe/' + wwe._id
-        }).then(
-            function() {
-                controller.getWwes();
-            },
-            function(error) {
-
-            }
-        )
-    };
-
-    this.editWwe = function() {
-        $http({
-            method:'PUT',
-            url: '/wwe/' + wwe._id,
-            data: {
-                title: this.updatedTitle || wwe.title,
-                link: this.updatedLink || wwe.link
-            }
-        }).then(
-            function(response) {
-                controller.updatedTitle = null;
-                controller.updatedWebsite = null;
-                controller.getWwes();
-            },
-            function(error) {
-                console.log(error);
-            }
-        )
-    };
-
-    this.getWwes = function() {
-        $http({
-            method: 'GET',
-            url: '/wwe/'
-        }).then(
-            function(response) {
-                controller.wwes = response.data;
-            },
-            function() {
-                console.log('error');
-            }
-        )
-    };
-
-    this.wwes = [];
-
-    this.getWwes();
-}]);
-=======
-
-// console.log(this);
-
-    const controller = this;
-
-
-    this.createWwe = function(){
-          $http({
-                method:'POST',
-                url: '/wwe',
-                data: {
-                    title: this.title,
-                    link: this.link
-                }
-            }).then(function(response){
-                // console.log(response);
-                controller.getWwe();
-            }, function(){
-                console.log(error);
-            }
-          );
-          // console.log(this);
-        };
-
 
         this.getWwe = function(){
           $http({
@@ -108,7 +30,7 @@ app.controller('MyController', ['$http', function($http) {
             url: '/wwe'
           }).then(
             function(response){
-              // console.log(response);
+               console.log(response.data);
               // console.log(this);
               // console.log(controller);
               controller.wwe = response.data;
@@ -135,43 +57,27 @@ app.controller('MyController', ['$http', function($http) {
         };
 
         this.editWwe = function(wwe){
-    $http({
-        method:'PUT',
-        url: '/wwe/' + wwe._id,
-        data: {
-          title: this.title,
-          link: this.link
-        }
-    }).then(
-        function(response){
-          this.indexOfEditFormToShow = null;
-          controller.indexOfEditFormToShow = null;
-            controller.getWwe();
-        },
+            $http({
+                method:'PUT',
+                url: '/wwe/' + wwe._id,
+                data: {
+                    title: this.updatedTitle || wwe.title,
+                    wweLink: this.updatedLink || wwe.wweLink
+                }
+        }).then(
+            function(response){
+                controller.updatedTitle = null;
+                controller.updatedWweLink = null;
+                controller.indexOfEdit = null;
+                controller.getWwe();
+            },
         function(error){
-
+            console.log(error);
         }
     );
 };
-////=====================this is for link activation======================
-// this.gif = function(wwe){
-//   $http({
-//     method: 'GET',
-//     url: this.link + wwe._id,
-//
-//   }).then(
-//     function(response){
-//       console.log(response);
-//     },
-//     function (error) {
-//
-//     }
-//   )
-// }
-////=====================================================================
 
-
-
+  this.wwes = [];
 
   this.getWwe();
 

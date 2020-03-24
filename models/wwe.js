@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const wweSchema = new mongoose.Schema({
   title: String,
-  link: String
+  wweLink: String
 });
 
 const Wwe = mongoose.model('Wwe', wweSchema);
