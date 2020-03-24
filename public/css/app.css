@@ -1,0 +1,51 @@
+body {
+  background-color: #f0f5f5
+}
+
+input {
+  height: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 20px;
+  color: blue;
+  font-size: 30px;
+}
+button {
+  color: #cc0000;
+  background-color: black;
+  height: 20px;
+  width: 40px;
+}
+
+img {
+  width: 250px;
+  height: 300px;
+}
+
+/* .container {
+  text-align: center;
+  margin-top: 100px;
+} */
+
+.header1 {
+  text-align: center;
+  width: 100%;
+  background-color: #006622;
+}
+
+.header1 > h1 {
+  font-size: 50px;
+  color: #f0f5f5;
+}
+
+
+
+/* .btn {
+  color: blue;
+  background-color: black;
+} */

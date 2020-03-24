@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="WweApp">
+<head>
+    <meta charset="UTF-8">
+    <title>WWE Raw! The place for your favorite wrestling GIFs!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body ng-controller="MyController as ctrl">
+  <div class="header1">
+    <h1>Welcome to WWE Raw! Browse of wrestling GIFs and memes!</h1>
+    <h3>You may also submit your own by filling in the form below. Edit by clicking the button in the entry, and clicking the X on the left will delete the entry.</h3>
+  </div>
+    <form ng-submit="ctrl.createWwe()">
+        <input type="text" ng-model="ctrl.title" placeholder="Entry Title"/>
+        <input type="text" ng-model="ctrl.wweLink" placeholder="Link"/>
+        <input type="submit" value="Create My New WWE Meme Entry!"/>
+    </form>
+    <ul>
+        <li ng-repeat="wwe in ctrl.wwe">
+             <span>
+                 <h6>{{wwe.title}}</h6>
+                 <a ng-click="ctrl.deleteWwe(wwe)">X</a>
+                 <img src="{{wwe.wweLink}}">
+                 <button class="btn" ng-if="$index !== ctrl.indexOfEdit"
+                         ng-click="ctrl.indexOfEdit = $index; ctrl.updatedTitle = null; ctrl.updatedWweLink = null">Edit</button>
+                 <form
+                        ng-if="$index === ctrl.indexOfEdit"
+                        ng-submit="ctrl.editWwe(wwe)">
+                     <input type="text" ng-model="ctrl.updatedTitle" placeholder="{{wwe.title}}"/>
+                     <input type="text" ng-model="ctrl.updatedWweLink" placeholder="{{wwe.wweLink}}"/>
+                     <input type="submit" value="Update Meme"/>
+                 </form>
+            </span>
+        </li>
+    </ul>
+</body>
+</html>
