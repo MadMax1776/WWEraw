@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="928d62d5-4d80-4a1c-9477-1352e35c5df1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/wwe.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/wwe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,13 +43,14 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="900950cb-0902-410a-bfd2-9a6b0df541ba" name="Default Changelist" comment="" />
+      <changelist id="928d62d5-4d80-4a1c-9477-1352e35c5df1" name="Default Changelist" comment="" />
       <created>1584974681099</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584974681099</updated>
       <workItem from="1584974682984" duration="2192000" />
       <workItem from="1584996070501" duration="901000" />
+      <workItem from="1585004166094" duration="4580000" />
     </task>
     <servers />
   </component>

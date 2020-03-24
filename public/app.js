@@ -2,13 +2,32 @@ const app = angular.module('WweApp', []);
 
 app.controller('MyController', ['$http', function($http) {
     this.title = null;
-    this.link = null;
-
-// console.log(this);
-
+ 
+    this.wweLink = null;
+    this.indexOfEdit = null;
     const controller = this;
 
-        this.  = [
+    this.createWwe = function() {
+        $http({
+            method: 'POST',
+            url:'/wwe',
+            data: {
+                title: this.title,
+                wweLink: this.wweLink
+            }
+        }).then(
+            function(response) {
+                controller.getWwe();
+            },
+            function(error) {
+                console.log(error);
+            }
+        )
+    };
+
+    
+
+        this. wwe = [
         {title: "Vince Mcmahon Humiliation", wweLink: "https://media.giphy.com/media/Ogxe3jSdivKbm/giphy.gif",  __v: 0},
         {title: "Trump shaves Mcmahon's Head", wweLink: "https://thegameswelove.tumblr.com/post/114959356134/champion-vs-champion-bobby-lashley-ecw-world",  __v: 0},
         {title: "Trump vs Mcmahon", wweLink: "https://www.reddit.com/r/gifs/comments/5d4h7k/the_45th_president_of_the_united_states/", __v: 0},
@@ -38,13 +57,14 @@ app.controller('MyController', ['$http', function($http) {
         };
 
 
+
         this.getWwe = function(){
           $http({
             method: 'GET',
             url: '/wwe'
           }).then(
             function(response){
-              // console.log(response);
+               console.log(response.data);
               // console.log(this);
               // console.log(controller);
               controller.wwe = response.data;
@@ -71,43 +91,27 @@ app.controller('MyController', ['$http', function($http) {
         };
 
         this.editWwe = function(wwe){
-    $http({
-        method:'PUT',
-        url: '/wwe/' + wwe._id,
-        data: {
-          title: this.title,
-          link: this.link
-        }
-    }).then(
-        function(response){
-          this.indexOfEditFormToShow = null;
-          controller.indexOfEditFormToShow = null;
-            controller.getWwe();
-        },
+            $http({
+                method:'PUT',
+                url: '/wwe/' + wwe._id,
+                data: {
+                    title: this.updatedTitle || wwe.title,
+                    wweLink: this.updatedLink || wwe.wweLink
+                }
+        }).then(
+            function(response){
+                controller.updatedTitle = null;
+                controller.updatedWweLink = null;
+                controller.indexOfEdit = null;
+                controller.getWwe();
+            },
         function(error){
-
+            console.log(error);
         }
     );
 };
-////=====================this is for link activation======================
-// this.gif = function(wwe){
-//   $http({
-//     method: 'GET',
-//     url: this.link + wwe._id,
-//
-//   }).then(
-//     function(response){
-//       console.log(response);
-//     },
-//     function (error) {
-//
-//     }
-//   )
-// }
-////=====================================================================
 
-
-
+  this.wwes = [];
 
   this.getWwe();
 
