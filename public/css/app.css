@@ -13,17 +13,29 @@ ul {
 li {
   margin: 20px;
   color: blue;
+  font-size: 30px;
+}
+button {
+  color: #cc0000;
+  background-color: black;
+  height: 20px;
+  width: 40px;
 }
 
-.container {
+img {
+  width: 250px;
+  height: 300px;
+}
+
+/* .container {
   text-align: center;
   margin-top: 100px;
-}
+} */
 
 .header1 {
   text-align: center;
   width: 100%;
-  background-color: #004d00;
+  background-color: #006622;
 }
 
 .header1 > h1 {
@@ -31,7 +43,9 @@ li {
   color: #f0f5f5;
 }
 
-button {
+
+
+/* .btn {
   color: blue;
   background-color: black;
-}
+} */
